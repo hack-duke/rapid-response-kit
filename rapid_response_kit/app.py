@@ -16,6 +16,8 @@ app.config.from_object('rapid_response_kit.utils.config')
 
 app.config.apps = Registry()
 
+app.config['NUMBERSDB'] = 'db/phone_numbers.json'
+
 autorespond.install(app)
 broadcast.install(app)
 conference_line.install(app)
@@ -37,4 +39,4 @@ if __name__ == '__main__':
     parser.add_argument('--debug', default=False, action="store_true",
                         help="Turn on debug mode")
     args = parser.parse_args()
-    app.run(debug=args.debug, port=args.port)
+    app.run(debug=args.debug, port=int(args.port))
